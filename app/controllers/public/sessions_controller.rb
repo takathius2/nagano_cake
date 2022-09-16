@@ -24,4 +24,16 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  # ログインのcreateアクションの前に顧客が退会しているか確認
+  before_action :customer_state, only: [:create]
+  protected
+  def customer_state
+    # 入力されたemailからアカウントを特定
+    @customer = Customer.find_by(email: params[:customer][:email])
+    return if !@customer
+    # 特定したパスワードとログイン画面のが一致しているか確認
+    if @customer.valid_password?(params[:customer][:password])
+      true && !false
+    end
+  end
 end

@@ -1,0 +1,8 @@
+<h1>商品ジャンル編集画面</h1>
+
+<%= form_with model: @genre, url: '/admin/genres', method: :post do |f| %>
+    <h3>ジャンル名</h3>
+    <%= f.text_field :name %>
+    
+    <%= f.submit '追加' %>
+<% end %>
