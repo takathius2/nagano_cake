@@ -1,11 +1,11 @@
 <h1>商品一覧</h1>
 <% @items.each do |item| %>
     <div>
-        <%= link_to admin_item_path(item.id) do %>
+        <%= link_to item_path(item.id) do %>
             <%= image_tag item.get_item_image(100,100) %></p>
             <p>商品名:<%= item.name %></p>
         <% end %>
-    <p>ジャンル名:<%= item.genre.name %></p>
+        <p>ジャンル名:<%= item.genre.name %></p>
+        <p>価格（税抜）<%= item.item_price %>円</p>
     </div>
 <% end %>
-<%= link_to "戻る", admin_path %>

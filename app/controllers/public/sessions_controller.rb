@@ -34,6 +34,9 @@ class Public::SessionsController < Devise::SessionsController
     # 特定したパスワードとログイン画面のが一致しているか確認
     if @customer.valid_password?(params[:customer][:password])
       true && !false
+      redirect_to customers_my_page_path
+    else
+      redirect_to new_customer_session_path
     end
   end
 end

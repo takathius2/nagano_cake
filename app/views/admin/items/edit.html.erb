@@ -1,19 +1,16 @@
 <h2>商品情報編集</h2>
-<%= form_with model: @item, url: '/admin/items/item.id', method: :patch do |f| %>
+<%= form_with model: @item, url: admin_item_path(@item.id), method: :patch do |f| %>
     <label for="inputName">商品名</label>
-        <%= f.text_field :name, autofocus: true, id:"商品名" %><br>
-    
+        <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"商品名" %><br>
     <label for="inputImage">商品画像</label><br>
-        <%= f.file_field :item_image, accept: "item_image/*" %><br>
-    
+        <%= f.file_field :item_image, placeholder:"商品画像", accept:"item_image/*" %><br>
     <label for="inputIntroduction">商品説明</label><br>
-        <%= f.text_area :introduction, id:"inputIntroduction" %><br>
-    
+        <%= f.text_area :introduction, id: "inputIntroduction" %><br>
     <label for="inputItem_price">価格（税抜）</label><br>
-        <%= f.text_field :item_price, autofocus: true, id: "inputItem_price" %><br>
-    
+        <%= f.text_field :item_price, autofocus: true, id:"inputItem_price", palceholder:"商品説明" %><br>
     <label for="inputGenre">ジャンル名</label>
-        <%= f.select :genre_id, @genres.map { 
-            |g| [g.name, g.id]},class: "form-control" %><br>
+        <%= f.select :genre_id, @genres.map { |g|
+            [g.name, g.id]},class: "form-control" %><br>
     <%= f.submit "変更を保存" %>
+    <%= link_to "戻る", admin_items_path %>
 <% end %>

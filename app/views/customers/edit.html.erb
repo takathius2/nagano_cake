@@ -1,8 +1,5 @@
-<h2>ながのケーキへようこそ！Sign up</h2>
-
-<%= form_with model: @customer, url: customer_registration_path  do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
-
+<h1>マイページ編集</h1>
+<%= form_with model: @customer, url: customers_infomation_up_date_path, method: :patch do |f| %>
   <div class="field">
     <%= f.label :email %>アドレス<br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
@@ -55,10 +52,5 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+    <%= f.submit "変更を保存" %>
 <% end %>
-
-<%= render "public/shared/links" %>
