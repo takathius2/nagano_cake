@@ -2,11 +2,10 @@ class Item < ApplicationRecord
     #商品画像
     has_one_attached :item_image
     
-    #Genreとは子の関係である
-    belongs_to :genre
-    
-    #CartItemとは親の関係である
+    has_many :order_details, dependent: :destroy
     has_many :cart_items, dependent: :destroy
+    belongs_to :genre
+   
     
     #消費税を求めるメソッド（10％
     def with_tax_price

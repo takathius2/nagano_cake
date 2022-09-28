@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  payment_method: 1
+  delivery_name: MyString
+  delivery_code: MyString
+  delivery_address: MyString
+  cost_price: MyString
+  price: MyString
+  order_status: 1
+
+two:
+  customer_id: 1
+  payment_method: 1
+  delivery_name: MyString
+  delivery_code: MyString
+  delivery_address: MyString
+  cost_price: MyString
+  price: MyString
+  order_status: 1
