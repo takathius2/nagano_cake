@@ -1,5 +1,7 @@
-<%= link_to "ログアウト", destroy_admin_session_path %>
+<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
 <h1>管理者専用ページ</h1>
 
+
 <%= link_to '商品追加', new_admin_item_path %><br>
-<%= link_to '商品一覧', admin_items_path %>
+<%= link_to '商品一覧', admin_items_path %><br>
+<%= link_to '会員一覧', admin_customers_path %>

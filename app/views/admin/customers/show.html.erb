@@ -1,0 +1,9 @@
+<div>
+   <h1>顧客情報</h1>
+    <h4>氏名</h4><%= @customer.last_name %> <%= @customer.first_name %><br>
+                 <%= @customer.last_name_kana %> <%= @customer.first_name_kana %><br>
+    <h4>住所</h4><%= @customer.postal_code %><br><%= @customer.address %><br>
+    <h4>電話番号</h4><%= @customer.telephone_number %>
+</div>
+<%= link_to "編集する", edit_admin_customer_path(@customer.id) %>
+<%#= link_to "退会させる", %> 
