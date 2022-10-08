@@ -12,6 +12,6 @@
         <%= f.select :genre_id, @genres.map { 
         |g| [g.name, g.id]},class: "form-control" %><br>
         <%= link_to "ジャンル一覧", admin_genres_path %> <br>
-        
+    #販売ステータスをenumで設定
         <%= f.submit '追加' %>
 <% end %>

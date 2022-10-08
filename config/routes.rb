@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
  
+  get 'addresses/index'
+  get 'addresses/edit'
   get '/' => 'homes#top'
   get '/about' => 'homes#about'
   
@@ -29,7 +31,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     patch '/customers' => 'customer#update'
-    parch '/order_details/id' => 'order_detail#update'
+    patch '/order_details' => 'order_detail#update'
   end
   #注文関連
   resources :orders, only: [:new, :index, :show]

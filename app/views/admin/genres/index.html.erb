@@ -1,4 +1,4 @@
-<h1>ジャンル名一覧</h1><br>
+<h2>ジャンル名一覧・追加</h2><br>
 <h3>ジャンル名</h3>
 <% @genres.each do |genre| %>
     <p><%= genre.name %><%= link_to "編集", edit_admin_genre_path(genre.id) %></p> 

@@ -1,5 +1,7 @@
 <h2>顧客用Log in</h2>
 
+<%= render "public/shared/error_messages", resource: @customer %>
+
 <%= form_with model: @customer,url: customer_session_path do |f| %>
   <div class="field">
     <%= f.label :email %><br />

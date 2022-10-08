@@ -1,7 +1,18 @@
 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-<h1>管理者専用ページ</h1>
+<h1>管理者ログイン</h1>
 
-
+<h4>注文履歴一覧</h4>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>購入者</th>
+                <th>注文個数</th>
+                <th>購入日時</th>
+            </tr>
+        </thead>
+    </table>
+</div>
 <%= link_to '商品追加', new_admin_item_path %><br>
 <%= link_to '商品一覧', admin_items_path %><br>
 <%= link_to '会員一覧', admin_customers_path %>

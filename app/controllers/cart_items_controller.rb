@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+ 
   def index
     @cart_items = CartItem.all
     @items = Item.all
@@ -18,9 +19,12 @@ class CartItemsController < ApplicationController
       @cart_item = CartItem.new(cart_item_params)
     end
     #ログインcustomerのみ更新できるようにするため分岐の外に記述する
-    @cart_item.customer_id = current_customer.id
-    @cart_item.save!
-    redirect_to cart_items_path
+    if @cart_item.customer = current_customer
+      @cart_item.save!
+      redirect_to cart_items_path
+    else
+      redirect_to new_customer_session_path
+    end
  end
 
   
