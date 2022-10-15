@@ -29,7 +29,7 @@ class CartItemsController < ApplicationController
 
   
   def update
-    @cart_item = current_customer
+    @cart_item = CartItem.find(params[:id])
     @item = Item.all
     @cart_item.update(cart_item_params)
     redirect_to cart_items_path

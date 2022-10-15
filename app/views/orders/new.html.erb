@@ -1,6 +1,6 @@
 <div>
 <h1>支払い方法</h1>
-<%= form_with model: @orders, url: orders_path, method: :post do |f| %>
+<%= form_with model: @order, url: orders_comfirm_path do |f| %>
     <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
         <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
     
@@ -26,12 +26,11 @@
         <%= f.label :delivery_method, Order.delivery_methods_i18n[:new_address] %><br>
     
         <h4>新しい配送先を指定してください</h4>
-        <p>宛名<%= f.text_field :name %></p>
+        <p>宛名<%= f.text_field :delivery_name %></p>
         <p>※ハイフン無し</p>
         <p>〒<%= f.text_field :delivery_code %></p>
         <p>住所<%= f.text_area :delivery_address %></p><br>
     
-    <%= f.submit '注文を確定する' %>
-    <p>※まだ確定ではありません</p>
+    <%= f.submit '確認画面へ進む' %>
 <% end %>
 </div>

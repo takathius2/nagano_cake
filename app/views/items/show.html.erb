@@ -1,9 +1,9 @@
 <h1>販売商品詳細</h1>
 <div>
     <%= image_tag @item.get_item_image(100,100) %></p>
-    <p>商品名:<%= @item.name %></p>
-    <P>商品説明:<%= @item.introduction %></P>
-    <p>価格（税抜）:<%= @item.item_price %>円</p>
+    <h2><%= @item.name %></h2>
+    <P><%= @item.introduction %></P>
+    <p><%= @item.with_tax_price %>円 (税込)</p>
     <p>商品ジャンル名:<%= @item.genre.name %></p>
 <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
     <p>数量を選択</p>
