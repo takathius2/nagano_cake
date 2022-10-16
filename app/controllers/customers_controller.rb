@@ -12,6 +12,12 @@ class CustomersController < ApplicationController
   def edit
     @customer = current_customer
   end
+  
+  def withdraw
+    @customer = current_customer
+    @customer.update!(is_deleted: true)
+    redirect_to root_path
+  end
 
   def unsubscribe
   end
