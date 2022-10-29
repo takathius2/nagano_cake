@@ -4,8 +4,8 @@ class Item < ApplicationRecord
     
     has_many :order_details, dependent: :destroy
     has_many :cart_items, dependent: :destroy
+    belongs_to :order
     belongs_to :genre
-    belongs_to :home
    
     
     #消費税を求めるメソッド（10％

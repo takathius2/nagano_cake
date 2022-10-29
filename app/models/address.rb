@@ -3,7 +3,7 @@ class Address < ApplicationRecord
     belongs_to :order
     
     def address_display
-        '〒' + postalcode + '' + address + '' + name
+        '〒' + postal_code + '' + address + '' + name
     end
     
 end

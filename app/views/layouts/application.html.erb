@@ -20,11 +20,11 @@
       <% elsif admin_signed_in? %>
         <div><%= link_to "商品一覧", admin_items_path %></div>
         <div><%= link_to "会員一覧", admin_customers_path %></div>
-        <div><%= link_to "注文履歴", admin_order_details_path %></div>
+        <div><%= link_to "注文履歴一覧", admin_order_details_path %></div>
         <div><%= link_to "ジャンル一覧", admin_genres_path %>
         <div><%= link_to "ログアウト", destroy_admin_session_path, method: :dekete %></div>
       <% else %>
-        <div><%= link_to "Aboute", new_admin_session_path %></div>
+        <div><%= link_to "Aboute", about_path %></div>
         <div><%= link_to "商品一覧", items_path %></div>
         <div><%= link_to "新規登録", new_customer_registration_path %></div>
         <div><%= link_to "ログイン", new_customer_session_path %></div>

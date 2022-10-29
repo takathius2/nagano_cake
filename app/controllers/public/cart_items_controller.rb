@@ -1,9 +1,8 @@
-class CartItemsController < ApplicationController
+class Public::CartItemsController < ApplicationController
  
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
     @items = Item.all
-    @cart_item = @items.all
     #合計金額の初期値は0円
     @total = 0
   end
@@ -11,6 +10,7 @@ class CartItemsController < ApplicationController
   
  def create
     @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
+      
     if @cart_item
       #カートにitemが存在したらamountに新しいCart_itemのamountを足す
       @cart_item.amount += CartItem.new(cart_item_params).amount
@@ -20,7 +20,8 @@ class CartItemsController < ApplicationController
     end
     #ログインcustomerのみ更新できるようにするため分岐の外に記述する
     if @cart_item.customer = current_customer
-      @cart_item.save!
+      p @cart_item
+      @cart_item.save
       redirect_to cart_items_path
     else
       redirect_to new_customer_session_path
