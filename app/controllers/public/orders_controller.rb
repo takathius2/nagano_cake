@@ -42,8 +42,8 @@ class Public::OrdersController < ApplicationController
   
 
   def index #注文履歴
-    @orders = Order.all
     @customer = current_customer.cart_items
+    @orders = current_customer.orders
     @order_detail = OrderDetail.all
     @item = Item.all
     @address = Address.all
@@ -52,6 +52,9 @@ class Public::OrdersController < ApplicationController
 
   def show #注文履歴詳細画面
     @order = Order.find(params[:id])
+    @customer = current_customer.cart_items
+    @order_detail = @order.order_details
+    @total = 0
   end
   
   private

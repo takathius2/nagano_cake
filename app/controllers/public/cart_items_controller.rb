@@ -7,7 +7,6 @@ class Public::CartItemsController < ApplicationController
     @total = 0
   end
   
-  
  def create
     @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id])
       
