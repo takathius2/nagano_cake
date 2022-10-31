@@ -48,6 +48,7 @@ class Public::OrdersController < ApplicationController
     @item = Item.all
     @address = Address.all
     @total = 0
+    @subtotal = 0
   end
 
   def show #注文履歴詳細画面
