@@ -16,7 +16,7 @@ class Admin::ItemsController < ApplicationController
   end
   
   def index
-    @items = Item.all
+    @items = Item.page(params[:page])
     @genres = Genre.all
   end
 
@@ -37,8 +37,7 @@ class Admin::ItemsController < ApplicationController
   
   private 
   def item_params
-    params.require(:item).permit(
-     :name, :item_image, :introduction, :item_price, :genre_id)
+    params.require(:item).permit(:name, :item_image, :introduction, :item_price, :genre_id)
   end
   
 end

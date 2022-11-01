@@ -48,13 +48,12 @@ class Public::OrdersController < ApplicationController
     @item = Item.all
     @address = Address.all
     @total = 0
-    @subtotal = 0
   end
 
   def show #注文履歴詳細画面
     @order = Order.find(params[:id])
     @customer = current_customer.cart_items
-    @order_detail = @order.order_details
+    @order_details = @order.order_details
     @total = 0
   end
   

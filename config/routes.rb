@@ -14,17 +14,17 @@ Rails.application.routes.draw do
       resources :items, only: [:index, :show]
       
       #注文関連
-     
       post '/orders/comfirm' => 'orders#comfirm'
       get '/orders/complete' => 'orders#complete'
       post '/orders' => 'orders#create'
       resources :orders, only: [:new, :index, :show]
+      
       #カート関連
       delete '/cart_items/destroy_all' => 'cart_items#destroy_all', as: 'destroy_all_cart_items'
       resources :cart_items, only: [:index, :update, :destroy, :create]
       resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-      
     end
+    
     #顧客情報関連
     devise_for :customers,skip: [:passwords], controllers: {
         registrations: "public/registrations",
@@ -43,7 +43,8 @@ Rails.application.routes.draw do
       resources :genres, only: [:index, :edit, :create, :update]
       resources :customers, only: [:index, :show, :edit, :update]
       patch '/customers' => 'customer#update'
-      patch '/order_details' => 'order_detail#update'
+      resources :orders, only: [:show, :update]
+      patch '/order_details/id' => 'order_detail#update'
     end
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   end

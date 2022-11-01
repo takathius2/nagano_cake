@@ -1,5 +1,5 @@
 class Public::HomesController < ApplicationController
   def top
-    @item =Item.all
+    @item =Item.page(params[:page])
   end
 end

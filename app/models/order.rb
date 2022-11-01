@@ -1,6 +1,5 @@
 class Order < ApplicationRecord
     has_many :addresses, dependent: :destroy
-    has_many :items, dependent: :destroy
     has_many :order_details, dependent: :destroy
     belongs_to :customer
     

@@ -2,7 +2,7 @@ class Public::CartItemsController < ApplicationController
  
   def index
     @cart_items = current_customer.cart_items
-    @items = Item.all
+    @items = Item.page(params[:page])
     #合計金額の初期値は0円
     @total = 0
   end

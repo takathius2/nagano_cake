@@ -1,5 +1,5 @@
-<h2>顧客用Log in</h2>
-
+<h2>ログイン</h2>
+<p>会員の方はこちらからログイン</p>
 <%= render "public/shared/error_messages", resource: @customer %>
 
 <%= form_with model: @customer,url: customer_session_path do |f| %>
@@ -25,4 +25,10 @@
   </div>
 <% end %>
 
-<%= render "public/shared/links" %>
+<h4>会員登録がお済でない方</h4>
+<%= link_to new_customer_registration_path do %>
+  <p>こちら
+<% end %>
+から新規登録を行ってください。</p>
+
+
