@@ -5,7 +5,7 @@ class Public::SessionsController < Devise::SessionsController
    protected
    def customer_state
   #入力されたemailからアカウントを1件特定
-     @customer = Customer.find_by(email: params[:customer][:email])
+    @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
   #特定したパスワードとログイン画面のが一致しているか確認
      if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted

@@ -2,5 +2,12 @@
 <p>退会すると、会員情報や<br>これまでの購入履歴が閲覧できなくなります。<br>
 退会する場合は、「退会する」をクリックしてください。</p>
 
-<%= link_to "退会しない", customers_infomation_edit_path %>
-<%= link_to "退会する", customers_withdraw_path, method: :patch %>
+<%#= link_to "退会しない", customers_infomation_edit_path %>
+<%#= link_to "退会する", customers_withdraw_path, method: :patch %>
+
+<%= form_with model: @customer, url:customers_withdraw_path, method: :patch do |f| %>
+    <%= f.submit "退会しない" %>
+    <%= f.hidden_field :is_deleted, false %>
+    <%= f.submit "退会する" %>
+    <%= f.hidden_field :is_deleted, true %>
+<% end %>

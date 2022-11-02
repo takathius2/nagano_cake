@@ -1,8 +1,8 @@
 <p>注文情報確認</p>
-<% @cart_items.each do |cart_item| %>
 <div>
     <table>
         <thead>
+        <% @cart_items.each do |cart_item| %>
             <tr>
                 <th></th>
                 <th>商品名</th>
@@ -20,7 +20,7 @@
                 <td><%= cart_item.subtotal %>円</td>
                 <% @total += cart_item.subtotal %> 
              </tr>
-            <% end %>
+        <% end %>
         </tbody>
     </table>
 </div>

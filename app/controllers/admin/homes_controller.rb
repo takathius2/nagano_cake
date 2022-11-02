@@ -1,6 +1,6 @@
 class Admin::HomesController < ApplicationController
   def top
-    @items = Item.page(params[:page])
-    @genres = Genre.all
+    @orders = Order.all
+    @order_details = OrderDetail.all
   end
 end

@@ -1,45 +1,37 @@
 
-<h4>商品一覧</h4>
-<%= link_to "+", new_admin_item_path %>
+
+<h4>注文履歴一覧</h4>
 <div>
     <table>
         <thead>
-            <% @items.each do |item| %>
+            <% @orders.each do |order| %>
             <tr>
                 <th>
-                    商品ID
+                    購入日時
                 </th>
                 <th>
-                    商品名
+                    購入者
                 </th>
                 <th>
-                    税抜価格
-                </th>
-                <th>
-                    ジャンル
+                    注文個数
                 </th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>
-                    <%= item.id %>
-                </td>
-                <td>
-                    <%= link_to admin_item_path(item.id) do %>
-                        <%= item.name %>
+                    <%= link_to admin_order_path(order.id) do %>
+                        <%= order.created_at.strftime('%Y/%m/%d') %>
                     <% end %>
                 </td>
                 <td>
-                    <%= item.item_price %>
+                    <%= order.customer.first_name %><%= order.customer.last_name %>
                 </td>
                 <td>
-                    <%= item.genre.name %>
+                    <%= order.order_details.sum(:amount) %>
                 </td>
             </tr>
             <% end %>
         </tbody>
     </table>
 </div>
-
-<%= paginate @items %>

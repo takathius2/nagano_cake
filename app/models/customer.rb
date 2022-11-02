@@ -8,6 +8,9 @@ class Customer < ApplicationRecord
  has_many :orders, dependent: :destroy
  has_many :addresses, dependent: :destroy
  
+ #0なら有効会員、１なら退会済みの無効会員
+ enum is_deleted: { false: false, true: true }
+ 
   validates :encrypted_password, presence: true
   validates :email, presence: true
 end

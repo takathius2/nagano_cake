@@ -1,4 +1,4 @@
-<h1>顧客一覧</h1>
+<h1>会員一覧</h1>
     
 <div>
     <table>
@@ -7,6 +7,7 @@
                 <th>会員ID</th>
                 <th>氏名</th>
                 <th>メールアドレス</th>
+                <th>ステータス</th>
             </tr>
         </thead>
         <% @customers.each do |customer| %>
@@ -21,6 +22,7 @@
                     <% end %>
                 </td>
                 <td><%= customer.email %></td>
+                <td><%= customer.is_deleted_i18n %></td>
             </tr>
         </tbody>
         <% end %>
