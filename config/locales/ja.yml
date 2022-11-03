@@ -12,3 +12,4 @@ ja:
       is_deleted:
         false: "有効"
         true: "無効"
+        

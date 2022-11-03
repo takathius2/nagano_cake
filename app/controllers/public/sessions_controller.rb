@@ -4,10 +4,10 @@ class Public::SessionsController < Devise::SessionsController
    before_action :customer_state, only: [:create]
    protected
    def customer_state
-  #入力されたemailからアカウントを1件特定
+    #入力されたemailからアカウントを1件特定
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
-  #特定したパスワードとログイン画面のが一致しているか確認
+    #特定したパスワードとログイン画面のが一致しているか確認
      if @customer.valid_password?(params[:customer][:password]) && @customer.is_deleted
          flash[:error] = "退会済みです。"
 
