@@ -35,6 +35,9 @@
         </tbody>
     </table>
     <p>合計金額（税込）<%= @total %>円</p>
-    <%= link_to "買い物を続ける", items_path %><br>
-    <%= link_to "会計する", new_order_path %><br>
+    <%= link_to "買い物を続ける", root_path %><br>
+    <% if @total == 0 %>
+    <% else %>
+        <%= link_to "会計する", new_order_path %>
+    <% end %>
 </div>

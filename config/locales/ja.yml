@@ -8,8 +8,3 @@ ja:
         my_postal_code: "自分の住所"
         registered_address: "登録済み住所"
         new_address: "新しい住所"
-    customer:
-      is_deleted:
-        false: "有効"
-        true: "無効"
-        

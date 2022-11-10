@@ -1,40 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
-    <title>NaganoCake</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8" />
+    <title>ながのケーキ</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <% if customer_signed_in? %>
-      <p>ようこそ<strong><%= current_customer.first_name %></strong>さん！</p>
-        <div><%= link_to "マイページ", customers_my_page_path %></div>
-        <div><%= link_to "カートを見る", cart_items_path %></div>
-        <div><%= link_to "ログアウト", destroy_customer_session_path, method: :delete %></div>
-      <% elsif admin_signed_in? %>
-        <div><%= link_to "商品一覧", admin_items_path %></div>
-        <div><%= link_to "会員一覧", admin_customers_path %></div>
-        <div><%= link_to "注文履歴一覧", admin_path %></div>
-        <div><%= link_to "ジャンル一覧", admin_genres_path %>
-        <div><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></div>
-      <% else %>
-        <div><%= link_to "Aboute", about_path %></div>
-        <div><%= link_to "商品一覧", items_path %></div>
-        <div><%= link_to "新規登録", new_customer_registration_path %></div>
-        <div><%= link_to "ログイン", new_customer_session_path %></div>
-      <% end %>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm ">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <h3>ながのケーキ</h3>
+        <ul class="navbar-nav ml-auto">
+          <% if admin_signed_in? %>
+            <li class="nav-item btn btn-sm">
+              <%= button_to "商品一覧", admin_items_path, method: :get %>
+            </li>
+            <li class="nav-item btn btn-sm">
+              <%= button_to "会員一覧", admin_customers_path, method: :get %>
+            </li>
+            <li class="nav-item btn btn-sm">
+              <%= button_to "注文履歴一覧", admin_path, method: :get %>
+            </li>
+            <li class="nav-item btn btn-sm">
+              <%= button_to "ジャンル一覧", admin_genres_path, method: :get %>
+            </li>
+            <li class ="nav-item btn btn-sm">
+              <%= button_to "ログアウト", destroy_admin_session_path, method: :delete %>
+            </li>
+          <% elsif customer_signed_in? %>
+          <p>ようこそ<strong><%= current_customer.first_name %></strong>さん！</p>
+            <li class="nav-item btn btn-sm">
+              <%= button_to "マイページ", customers_my_page_path, method: :get %>
+            </li>
+            <li class="nav-item btn btn-sm">
+            <%= button_to "商品一覧", items_path, method: :get %>
+            </li>
+            <li class="nav-item btn btn-sm">
+              <%= button_to "カート", cart_items_path, method: :get %>
+            </li>
+            <li class="nav-item btn btn-sm">
+              <%= button_to "ログアウト", destroy_customer_session_path, method: :delete %>
+            </li>
+          <% else %>
+          <li class="nav-item btn btn-sm">
+            <%= button_to "Aboute", about_path, method: :get %>
+          </li>
+          <li class="nav-item btn btn-sm">
+            <%= button_to "商品一覧", items_path, method: :get %>
+          </li>
+          <li class="nav-item btn btn-sm">
+            <%= button_to "新規登録", new_customer_registration_path, method: :get %>
+          </li>
+          <li class="nav-item btn btn-sm">
+            <%= button_to "ログイン", new_customer_session_path, method: :get %>
+          </li>
+        </div>
+      </nav>
+          <% end %>
+        </ul>
     </header>
-    <main>
+    <main class="md=auto">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
-
       <%= yield %>
     </main>
+    <footer class="footer">
+      <div class="border-top" style="padding:50px;"></div>
+      </div>
+    </footer>
   </body>
 </html>

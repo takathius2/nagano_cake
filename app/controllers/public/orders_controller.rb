@@ -53,8 +53,9 @@ class Public::OrdersController < ApplicationController
   def show #注文履歴詳細画面
     @order = Order.find(params[:id])
     @customer = current_customer.cart_items
-    @order_details = @order.order_details
+    @order_detail = @order.order_details
     @total = 0
+   
   end
   
   private
