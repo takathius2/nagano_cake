@@ -4,52 +4,32 @@
         <thead>
             <tr>
                 <th>購入者</th>
-                <th>注文日</th>
-                <th>配送先</th>
-                <th>支払方法</th>
+                    <td><%= @order_detail.customer.first_name %></td>
+                    <td><%= @order_detail.customer.last_name %></td>
+            </tr>
+            <tr>
+                <th>注文日</th><td><%= @order_detail.created_at.strftime('%Y/%m/%d') %></td>
+            </tr>
+            <tr>
+                <th>配送先</th><td><%= @order_detail.delivery_address %> </td>
+            </tr>
+            <tr>
+                <th>支払方法</th><td><%= @order_detail.payment_method_i18n %></td>
             </tr>
         </thead>
-        <tbody>
-        <% @order_detail.each do |order_detail| %>
-            <tr>
-                <td>
-                    <%= order_detail.order.customer.first_name %>
-                    <%= order_detail.order.customer.last_name %>
-                </td>
-                <td>
-                    <%= order_detail.created_at.strftime('%Y/%m/%d') %>
-                </td>
-                <td>
-                    <%= order_detail.order.delivery_address %> 
-                </td>
-                <td>
-                    <%= order_detail.order.payment_method_i18n %>
-                </td>
-            </tr>
-        <% end %>
-        </tbody>
     </table>
     
     <table>
         <thead>
             <tr>
-                <th>商品合計</th>
-                <th>送料</th>
-                <th>請求金額合計</th>
+                <th>商品合計</th><td><%= @order.price.to_i - @order.cost_price.to_i %></td>
+            </tr>
+            <tr>
+                <th>送料</th><td><%= @order.cost_price %>円</td>
+            </tr>
+            <tr>
+                <th>請求金額合計</th><td><%= @order.price %>円</td>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <%= @order.price.to_i - @order.cost_price.to_i %>
-                </td>
-                <td>
-                    <%= @order.cost_price %>円
-                </td>
-                <td>
-                    <%= @order.price %>円
-                </td>
-            </tr>
-        </tbody>
     </table>
 </div>
