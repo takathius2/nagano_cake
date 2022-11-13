@@ -16,7 +16,7 @@ class Public::CustomersController < ApplicationController
   
   def withdraw
     @customer = current_customer
-    @customer.update(customer_params)
+    @customer.update(is_deleted: :true)
     if @customer.is_deleted == false
       redirect_to customers_infomation_edit_path
     else

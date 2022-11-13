@@ -3,8 +3,9 @@
 退会する場合は、「退会する」をクリックしてください。</p>
 
 <%= button_to "退会しない", customers_infomation_edit_path, method: :get %>
+<%= button_to "退会する", customers_withdraw_path, method: :patch, data: { confirm: '本当に退会しますか？' } %>
 
-<%= form_with model: @customer, url:customers_withdraw_path, method: :patch do |f| %>
-    <%= f.hidden_field :is_deleted, :value => true %>
-    <%= f.submit "退会する" %>
-<% end %>
+<%#= form_with model: @customer, url:customers_withdraw_path, method: :patch do |f| %>
+    <%#= f.hidden_field :is_deleted, :value => true %>
+    <%#= f.submit "退会する" %>
+<%# end %>
